@@ -3,8 +3,6 @@ name: Train ML Model
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
   workflow_dispatch:
 
 jobs:
@@ -21,10 +19,10 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: pip install -r .github/workflows/requirements.txt
 
-      - name: Train model
-        run: python model.py
+      - name: Run model
+        run: python .github/workflows/model.py
 
       - name: Upload results
         uses: actions/upload-artifact@v4
